@@ -20,25 +20,13 @@ module.exports = (env) => {
                 test: /\.js$/,
                 exclude: /node_modules/
             },
-            { 
-                test: /\.s?css$/,
-                use: !isProduction ? [
-                    {
-                        loader: MiniCssExtractPlugin.loader 
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    }
-                ] : ['style-loader']
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    !isProduction ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
+                ],
             }
             ]
         },
