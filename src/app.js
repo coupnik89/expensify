@@ -9,9 +9,6 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 // store
 import configureStore from './store/configureStore';
-import {addExpense} from './actions/expenses';
-import getVisibleExpenses from './selectors/expenses';
-
 
 const store = configureStore();
 

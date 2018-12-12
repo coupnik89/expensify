@@ -4,14 +4,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env) => {
     const isProduction = env === 'production';
-    const CSSextract = new MiniCssExtractPlugin({
-        filename: "styles.css",
-    });
 
     return {
+        mode: !isProduction ? 'development' : 'production',
         entry: './src/app.js',
         output: {
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname, 'public', 'dist'),
             filename: 'bundle.js'
         },
         module: {
@@ -23,24 +21,23 @@ module.exports = (env) => {
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    !isProduction ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader'
+                    MiniCssExtractPlugin.loader,
+                    { loader: 'css-loader', options: { sourceMap: true } },
+                    { loader: 'sass-loader', options: { sourceMap: true } }
                 ],
             }
             ]
         },
         plugins: [
-            CSSextract
+            new MiniCssExtractPlugin({
+                filename: "styles.css"
+            })
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.join(__dirname, 'public'),
-            historyApiFallback: true
+            historyApiFallback: true,
+            publicPath: '/dist/'
         }
     }
 }
-
-// loader
-// convert es6 -> es5
-// jsx -> regualr js

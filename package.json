@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "live-server public/",
-    "dev-server": "webpack-dev-server --mode development",
+    "dev-server": "webpack-dev-server",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "test": "jest --config=jest.config.json",
@@ -15,9 +14,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
-    "enzyme-to-json": "^3.3.4",
     "express": "^4.16.4",
     "live-server": "^1.2.1",
     "moment": "^2.22.2",
@@ -29,12 +25,13 @@
     "react-modal": "^3.6.1",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "react-test-renderer": "^16.6.3",
     "redux": "^4.0.1",
     "uuid": "^3.3.2",
-    "webpack": "^4.26.1"
-  },
-  "devDependencies": {
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
@@ -44,12 +41,14 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^1.0.1",
+    "mini-css-extract-plugin": "^0.5.0"
+  },
+  "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
+    "react-test-renderer": "^16.6.3",
     "jest": "^23.6.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   }
 }
