@@ -6,10 +6,9 @@ module.exports = (env) => {
     const isProduction = env === 'production';
 
     return {
-        mode: !isProduction ? 'development' : 'production',
         entry: './src/app.js',
         output: {
-            path: path.join(__dirname, 'public', 'dist'),
+            path: path.join(__dirname, 'public'),
             filename: 'bundle.js'
         },
         module: {
@@ -30,14 +29,17 @@ module.exports = (env) => {
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: "styles.css"
+                filename: "dist/styles.css"
             })
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.join(__dirname, 'public'),
-            historyApiFallback: true,
-            publicPath: '/dist/'
+            historyApiFallback: true
         }
     }
 }
+
+// loader
+// convert es6 -> es5
+// jsx -> regualr js

@@ -1,5 +1,4 @@
 import { addExpense, removeExpense, editExpense } from '../../actions/expenses';
-import expenses from '../fixtures/expenses';
 
 test('should generate addExpense object with default', () => {
     const action = addExpense();
